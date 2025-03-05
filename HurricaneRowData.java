@@ -1,7 +1,7 @@
 /*
 Jade Walters
 CSCI 2251
-Assignment 3: Hurricane Data
+Assignment: Hurricane Data/Linked List
 Purpose: Practive working with classes and objects
 Sources: I referenced some of my coding projects from 
 CS 1152 for array lists and classes
