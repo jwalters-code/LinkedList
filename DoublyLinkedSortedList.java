@@ -97,7 +97,10 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	public String toString() {
 		
 		//create String variable, TODO add first linkedlist
-		String listString = "";
+		String listString = String.format
+			("%10s %10s %10s %10s %10s", 
+			"Year", "Ace Index", "# Tropical Storms", 
+			"# Hurricanes Cat. 1-5", "# Major Huricanes Cat. 3-5");
 		
 		//TODO add each LinkedList on separate lines
 		//String.append(
