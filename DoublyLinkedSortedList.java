@@ -23,7 +23,6 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	
 	//Get the value of the current DoublyLinkedSortedList
 	public HurricaneRowData getValue() {
-		
 		return data;
 	}
 	
@@ -47,21 +46,25 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 		return previous != null;
 	}
 	
-	//TODO Set previous to be the given DoublyLinkedSortedList
+	//Set previous to be the given DoublyLinkedSortedList
 	public void setPrevious(DoublyLinkedSortedList previous) {
+		previous = previous;
 	}
 	
 	//Return a reference to the previous DoublyLinkedSortedList
 	public DoublyLinkedSortedList getPrevious() {
-		return previous; //placeholder
+		return previous;
 	}
 	
-	//TODO Return a reference to the first DoublyLinkedSortedList element in the list
+	//Return a reference to the first DoublyLinkedSortedList element in the list
 	public DoublyLinkedSortedList getFirst() {
-		return this; //placeholder
+		if(!hasPrevious()) {
+			return this;
+		}
+		return previous.getFirst();
 	}
 	
-	//TODO Return a reference to the last DoublyLinkedSortedList element in the list
+	//Return a reference to the last DoublyLinkedSortedList element in the list
 	public DoublyLinkedSortedList getLast() {
 		if(!hasNext()) {
 			return this;
@@ -92,6 +95,13 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	//TODO Return the entire list as a multi-line String
 	@Override
 	public String toString() {
-		return "";
+		
+		//create String variable, TODO add first linkedlist
+		String listString = "";
+		
+		//TODO add each LinkedList on separate lines
+		//String.append(
+		
+		return listString;
 	}
 }
