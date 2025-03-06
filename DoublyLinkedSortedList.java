@@ -2,39 +2,90 @@
 
 public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	
-	//TODO Get the value of the current DoublyLinkedSortedList
-	public HurricaneRowData getValue();
+	//set up nodes
+	//https://www.geeksforgeeks.org/doubly-linked-list/
+	private HurricaneRowData data;
+	private DoublyLinkedSortedList previous;
+	private DoublyLinkedSortedList next;
 	
-	//TODO Return true if next is not null
-	public boolean hasNext();
+	//constructor
+	//https://www.geeksforgeeks.org/doubly-linked-list/
+	public DoublyLinkedSortedList(HurricaneRowData data) {
+		this.data = data;
+		previous = next = null;
+	}		
 	
-	//TODO Set next to be the given DoublyLinkedSortedList
-	public void setNext(DoublyLinkedSortedList next);
+	//Get the value of the current DoublyLinkedSortedList
+	public HurricaneRowData getValue() {
+		
+		return data;
+	}
+	
+	//Return true if next is not null
+	public boolean hasNext() {
+		return next != null;
+	}
+	
+	//Set next to be the given DoublyLinkedSortedList
+	public void setNext(DoublyLinkedSortedList next) {
+		next = next;
+	}
 	
 	//TODO Return a reference to the next DoublyLinkedSortedList
-	public DoublyLinkedSortedList getNext();
+	public DoublyLinkedSortedList getNext() {
+		return next;
+	}
 	
-	//TODO Return true if previous is not null
-	public boolean hasPrevious();
+	//Return true if previous is not null
+	public boolean hasPrevious() {
+		return previous != null;
+	}
 	
 	//TODO Set previous to be the given DoublyLinkedSortedList
-	public void setPrevious(DoublyLinkedSortedList previous);
+	public void setPrevious(DoublyLinkedSortedList previous) {
+	}
 	
 	//TODO Return a reference to the previous DoublyLinkedSortedList
-	public DoublyLinkedSortedList getPrevious();
+	public DoublyLinkedSortedList getPrevious() {
+		return this; //placeholder
+	}
 	
 	//TODO Return a reference to the first DoublyLinkedSortedList element in the list
-	public DoublyLinkedSortedList getFirst();
+	public DoublyLinkedSortedList getFirst() {
+		return this; //placeholder
+	}
 	
 	//TODO Return a reference to the last DoublyLinkedSortedList element in the list
-	public DoublyLinkedSortedList getLast();
+	public DoublyLinkedSortedList getLast() {
+		if(!hasNext()) {
+			return this;
+		}
+		return next.getLast();
+	}
 	
 	//TODO Remove the DoublyLinkedSortedList element that has toRemove as its value
-	public DoublyLinkedSortedList remove(HurricaneRowData toRemove);
+	public DoublyLinkedSortedList remove(HurricaneRowData toRemove) {
+		if(!getValue().equals(toRemove)) { //if not data == toRemove
+			//go to next?????
+		}
+		return this; //placeholder
+	}
 	
 	//TODO Insert a new DoublyLinkedSortedList element that has the given newValue in order in the list.
-	public void insert(HurricaneRowData newValue);
+	//sort maxAce from max to min
+	public void insert(HurricaneRowData newValue) {
+		//create new linkedList for current data
+		DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);
+		
+		//insert into correct location based on maxAce value
+		
+		//once determined where to put
+		
+	}
 	
 	//TODO Return the entire list as a multi-line String
-	public String toString();
+	@Override
+	public String toString() {
+		return "";
+	}
 }
