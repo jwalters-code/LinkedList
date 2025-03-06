@@ -31,7 +31,7 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 		next = next;
 	}
 	
-	//TODO Return a reference to the next DoublyLinkedSortedList
+	//Return a reference to the next DoublyLinkedSortedList
 	public DoublyLinkedSortedList getNext() {
 		return next;
 	}
@@ -45,9 +45,9 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	public void setPrevious(DoublyLinkedSortedList previous) {
 	}
 	
-	//TODO Return a reference to the previous DoublyLinkedSortedList
+	//Return a reference to the previous DoublyLinkedSortedList
 	public DoublyLinkedSortedList getPrevious() {
-		return this; //placeholder
+		return previous; //placeholder
 	}
 	
 	//TODO Return a reference to the first DoublyLinkedSortedList element in the list
