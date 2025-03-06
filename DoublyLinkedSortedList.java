@@ -12,7 +12,7 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	//https://www.geeksforgeeks.org/doubly-linked-list/
 	public DoublyLinkedSortedList(HurricaneRowData data) {
 		this.data = data;
-		previous = next = null;
+		previous = next = null; //????????????? fix this probably
 	}		
 	
 	//Get the value of the current DoublyLinkedSortedList
