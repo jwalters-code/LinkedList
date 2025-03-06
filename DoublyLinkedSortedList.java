@@ -2,17 +2,23 @@
 
 public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	
-	//set up nodes
-	//https://www.geeksforgeeks.org/doubly-linked-list/
+	//instance variables
 	private HurricaneRowData data;
 	private DoublyLinkedSortedList previous;
 	private DoublyLinkedSortedList next;
 	
-	//constructor
-	//https://www.geeksforgeeks.org/doubly-linked-list/
+	//default constructor
+	public DoublyLinkedSortedList() {
+		this.data = null;
+		previous = null;
+		next = null; 
+	}
+	
+	//constructor with data
 	public DoublyLinkedSortedList(HurricaneRowData data) {
 		this.data = data;
-		previous = next = null; //????????????? fix this probably
+		previous = null;
+		next = null; 
 	}		
 	
 	//Get the value of the current DoublyLinkedSortedList
