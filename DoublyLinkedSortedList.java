@@ -84,7 +84,7 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 		} 
 		
 		//if it finds the data, redirect next and previous pointers
-		if(getValue().equals(toRemove) {
+		if(getValue().equals(toRemove)) {
 			if(hasPrevious() && hasNext()) { //middle linkedlist
 				toReturn = this;
 				next.setPrevious(previous);  //set next's previous to current previous
@@ -106,81 +106,42 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 				data = null;  //erase data, pointers already null
 			}
 		}
-		return toReturn;  //null if not found, or set to this if found
+		return toReturn;  //null if not found, or set to deleted linked list if found
 	}
 	
-	//TODO Insert a new DoublyLinkedSortedList element that has the given newValue in order in the list.
+	//Insert a new DoublyLinkedSortedList element that has the given newValue in order in the list.
 	//sort maxAce from max to min
 	public void insert(HurricaneRowData newValue) {
-		
-		while(hasNext()) {
-			if(newValue.getAceIndex() > data.getAceIndex()) {
-				
-			}
-		} 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//insert into correct location based on maxAce value?????
-		if(!hasNext() && !hasPrevious()) { //empty list
-		
-			//create new list
-			//DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);
-		}
-		
 		if(newValue.getAceIndex() > data.getAceIndex()) {
-			if(hasPrevious() && hasNext()) { //middle linkedlist
+			if(hasPrevious()) { //middle or end linkedlist
+				DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
+				newList.previous = previous; //set newList's previous to current previous
+				newList.next = this;  //set newLists's next to current linkedList
 				
+				//reset pointers of linkedlists ahead and behind to point to the inserted linkedlist
+				previous.next = newList;
+				next.previous = newList;
 			}
 			
 			else if(!hasPrevious() && hasNext()) { //first linkedlist
-				
+				DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
+				//don't set newList previous because already null
+				newList.next = this; //newList's next set to current linkedList
+				previous = newList; //current linkedList's previous set to newList
 			}
-			
-			else if(hasPrevious() && !hasNext()) {  //last linkedlist
-				
-			}
-			
 		}
 		
+		else if(hasNext()) {
+			next.insert(newValue);  //call insert on next linkedlist
+		}
+		
+		else { //smallest value, add to end
+			DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
+			//don't set newList next because already null
+			newList.previous = this;  //newList's previous is current linkedList
+			next = newList;  //current linkedList's next is set to newList
+		}
 	}
-	
-	/*
-	//EXAMPLE CODE, DELETE
-	public void insertAfter(T data, int index)
-	{
-		if(index == 0)
-		{
-			LinkedList<T> newNext = new LinkedList<T>(data);
-			if(hasNext())
-			{
-				LinkedList<T> formerNext = next;
-				newNext.setNext(formerNext);
-			}
-			setNext(newNext);
-		}
-		else
-		{
-			next.insertAfter(data, index-1);
-		}
-	}*/
 	
 	//Return the entire list as a multi-line String
 	@Override
