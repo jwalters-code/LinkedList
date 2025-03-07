@@ -72,79 +72,117 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 		return next.getLast();
 	}
 	
-	//TODO Remove the DoublyLinkedSortedList element that has toRemove as its value
+	//Remove the DoublyLinkedSortedList element that has toRemove as its value
 	public DoublyLinkedSortedList remove(HurricaneRowData toRemove) {
 		
 		//create toRemove variable
 		DoublyLinkedSortedList toReturn = null;
 		
-		if(!getValue().equals(toRemove)) { //if data != toRemove
+		//Call the next linked list until it finds the data
+		while(!getValue().equals(toRemove)) { //while data != toRemove
 			next.remove(toRemove); //check next linkedlist
 		} 
 		
-		else {
+		//if it finds the data, redirect next and previous pointers
+		if(getValue().equals(toRemove) {
 			if(hasPrevious() && hasNext()) { //middle linkedlist
-				
+				toReturn = this;
+				next.setPrevious(previous);  //set next's previous to current previous
+				previous.setNext(next);  //set previous' next to current next
 			}
+			
 			else if(!hasPrevious() && hasNext()) { //first linkedlist
-				
+				toReturn = this;
+				next.setPrevious(null);  //set next's previous to null
 			}
+			
 			else if(hasPrevious() && !hasNext()) {  //last linkedlist
-				
+				toReturn = this;
+				previous.setNext(null);  //set previous's next to null
+			}
+			
+			else { //only link on list
+				toReturn = this;
+				data = null;  //erase data, pointers already null
 			}
 		}
-		return toReturn;
+		return toReturn;  //null if not found, or set to this if found
 	}
-	
-	/*
-	//example code, DELETE
-	public T removeAt(int index)
-	{
-		T toReturn = null;
-		// This doesn't remove the link.
-		// Should index 0 throw an error instead?
-		if(index == 0)
-		{
-			toReturn = data;
-			data = null;
-			System.out.println("Possible error in LinkedList.removeAt. Link not actually delete for index 0.");
-		}
-		if(index == 1)
-		{
-			if(hasNext())
-			{
-				// Skip next
-				toReturn = next.getData();
-				LinkedList<T> nextNext = next.getNext();
-				setNext(nextNext);
-			}
-			else
-			{
-				// There is no next to be deleted.
-				// Throw an error?
-				System.out.println("Possible error in LinkedList.removeAt. Link to be deleted does not exist.");
-			}
-		} //if(index == 1)
-		else
-		{	// Recurse
-			toReturn = next.removeAt(index-1);
-		}
-		return toReturn;
-	} */
 	
 	//TODO Insert a new DoublyLinkedSortedList element that has the given newValue in order in the list.
 	//sort maxAce from max to min
 	public void insert(HurricaneRowData newValue) {
-		//create new linkedList for current data
-		DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);
 		
-		//insert into correct location based on maxAce value
+		while(hasNext()) {
+			if(newValue.getAceIndex() > data.getAceIndex()) {
+				
+			}
+		} 
 		
-		//once determined where to put
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//insert into correct location based on maxAce value?????
+		if(!hasNext() && !hasPrevious()) { //empty list
+		
+			//create new list
+			//DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);
+		}
+		
+		if(newValue.getAceIndex() > data.getAceIndex()) {
+			if(hasPrevious() && hasNext()) { //middle linkedlist
+				
+			}
+			
+			else if(!hasPrevious() && hasNext()) { //first linkedlist
+				
+			}
+			
+			else if(hasPrevious() && !hasNext()) {  //last linkedlist
+				
+			}
+			
+		}
 		
 	}
 	
-	//TODO Return the entire list as a multi-line String
+	/*
+	//EXAMPLE CODE, DELETE
+	public void insertAfter(T data, int index)
+	{
+		if(index == 0)
+		{
+			LinkedList<T> newNext = new LinkedList<T>(data);
+			if(hasNext())
+			{
+				LinkedList<T> formerNext = next;
+				newNext.setNext(formerNext);
+			}
+			setNext(newNext);
+		}
+		else
+		{
+			next.insertAfter(data, index-1);
+		}
+	}*/
+	
+	//Return the entire list as a multi-line String
 	@Override
 	public String toString() {
 		
