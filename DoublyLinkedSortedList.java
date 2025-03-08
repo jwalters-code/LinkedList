@@ -32,8 +32,9 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	}
 	
 	//Set next to be the given DoublyLinkedSortedList
-	public void setNext(DoublyLinkedSortedList n) {
-		next = n;
+	public void setNext(DoublyLinkedSortedList next) {
+		this.next = next;
+		next.previous = this;
 	}
 	
 	//Return a reference to the next DoublyLinkedSortedList
@@ -47,8 +48,9 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	}
 	
 	//Set previous to be the given DoublyLinkedSortedList
-	public void setPrevious(DoublyLinkedSortedList p) {
-		previous = p;
+	public void setPrevious(DoublyLinkedSortedList previous) {
+		this.previous = previous;
+		previous.next = this;
 	}
 	
 	//Return a reference to the previous DoublyLinkedSortedList
