@@ -9,16 +9,16 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	
 	//default constructor
 	public DoublyLinkedSortedList() {
-		data = null;
-		previous = null;
-		next = null; 
+		this.data = null;
+		this.previous = null;
+		this.next = null; 
 	}
 	
 	//constructor with data
 	public DoublyLinkedSortedList(HurricaneRowData data) {
-		data = data;
-		previous = null;
-		next = null; 
+		this.data = data;
+		this.previous = null;
+		this.next = null; 
 	}		
 	
 	//Get the value of the current DoublyLinkedSortedList
