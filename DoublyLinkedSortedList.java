@@ -115,19 +115,19 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 		if(newValue.getAceIndex() > data.getAceIndex()) {
 			if(hasPrevious()) { //middle or end linkedlist
 				DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
-				newList.previous = previous; //set newList's previous to current previous
-				newList.next = this;  //set newLists's next to current linkedList
+				newList.setPrevious(previous); //set newList's previous to current previous
+				newList.setNext(this);  //set newLists's next to current linkedList
 				
 				//reset pointers of linkedlists ahead and behind to point to the inserted linkedlist
-				previous.next = newList;
-				next.previous = newList;
+				previous.setNext(newList);
+				next.setPrevious(newList);
 			}
 			
 			else if(!hasPrevious() && hasNext()) { //first linkedlist
 				DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
 				//don't set newList previous because already null
-				newList.next = this; //newList's next set to current linkedList
-				previous = newList; //current linkedList's previous set to newList
+				newList.setNext(this); //newList's next set to current linkedList
+				setPrevious(newList); //current linkedList's previous set to newList
 			}
 		}
 		
@@ -138,8 +138,8 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 		else { //smallest value, add to end
 			DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
 			//don't set newList next because already null
-			newList.previous = this;  //newList's previous is current linkedList
-			next = newList;  //current linkedList's next is set to newList
+			newList.setPrevious(this);  //newList's previous is current linkedList
+			setNext(newList);  //current linkedList's next is set to newList
 		}
 	}
 	
