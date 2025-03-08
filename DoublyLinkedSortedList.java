@@ -9,14 +9,14 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	
 	//default constructor
 	public DoublyLinkedSortedList() {
-		this.data = null;
+		data = null;
 		previous = null;
 		next = null; 
 	}
 	
 	//constructor with data
 	public DoublyLinkedSortedList(HurricaneRowData data) {
-		this.data = data;
+		data = data;
 		previous = null;
 		next = null; 
 	}		
@@ -112,8 +112,14 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	//Insert a new DoublyLinkedSortedList element that has the given newValue in order in the list.
 	//sort maxAce from max to min
 	public void insert(HurricaneRowData newValue) {
-		if(newValue.getAceIndex() > data.getAceIndex()) {
-			if(hasPrevious()) { //middle or end linkedlist
+	
+		//if empty list, set first linkedlist to this value
+		if(getValue() == null) { 
+			data = newValue;
+		}
+		
+		else if(newValue.getAceIndex() > data.getAceIndex()) {
+			if(hasPrevious() && hasNext()) { //middle
 				DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
 				newList.setPrevious(previous); //set newList's previous to current previous
 				newList.setNext(this);  //set newLists's next to current linkedList
@@ -143,19 +149,21 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 		}
 	}
 	
+	/*
 	//Return the entire list as a multi-line String
 	@Override
 	public String toString() {
 		
-		//create String variable
-		String listString = String.format("%10s %10s %10s %10s %10s\n", 
-			"Year", "Ace Index", "# Tropical Storms", 
-			"# Hurricanes Cat. 1-5", "# Major Huricanes Cat. 3-5");
+		
+		//create String variable and add headers
+		String listString = String.format("%15s %15s %15s %15s %15s\n", 
+			"Year", "Ace Index", "Tropical Storms", 
+			"Hurricanes Cat. 1-5", "Major Huricanes Cat. 3-5");
 		
 		while(hasNext()) {
 			
 			//add each LinkedList on separate lines
-			listString.concat(String.format("%10d %10d %10d %10d %10d\n",
+			listString.concat(String.format("%15d %15d %15d %15d %15d\n",
 				data.getYear(), data.getAceIndex(), data.getNumStorms(), 
 				data.getNumHurr(), data.getNumMajHurr()));
 				
@@ -165,5 +173,5 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 			}
 		}
 		return listString;
-	}
+	}*/
 }

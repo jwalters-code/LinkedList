@@ -1,2 +1,1 @@
-Maximal ACE: 248
-Year: 2005
+DoublyLinkedSortedList@16b4a017

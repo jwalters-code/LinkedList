@@ -33,6 +33,7 @@ public class Main {
 		//uses linkedlist option
 		//create linkedList for hurricane row data
 		DoublyLinkedSortedList dataList = new DoublyLinkedSortedList();
+		System.out.println(dataList.getValue());
 
 		try {
 			
@@ -58,8 +59,8 @@ public class Main {
 				System.out.println(lineData);
 				for(int i=0; i<tempArray.length; i++) {
 					System.out.println(tempArray[i]);
-				}
-				*/
+				}*/
+				
 				
 				//convert data from Strings to integers
 				//source: 
@@ -70,8 +71,7 @@ public class Main {
 				}
 				
 				//create hurricaneRowData objects
-				HurricaneRowData hurricane = new HurricaneRowData
-					(numArray[0], numArray[1], numArray[2], numArray[3], numArray[4]);
+				HurricaneRowData hurricane = new HurricaneRowData(numArray[0], numArray[1], numArray[2], numArray[3], numArray[4]);
 				
 				//add hurricane object to data array list
 				//dataArray.add(hurricane);
@@ -80,6 +80,7 @@ public class Main {
 				dataList.insert(hurricane);
 				
 			}
+			System.out.println(dataList.getValue());
 			
 			//close scanner
 			readFile.close();
@@ -120,14 +121,22 @@ public class Main {
 		System.out.print(dataArray.get(maxIndex).toString());
 		*/
 		
+		/*
 		//uses linkedlist option
 		//get maximal maxAce year data and print
 		DoublyLinkedSortedList maxAceList = dataList.getFirst();
 		HurricaneRowData maxAceData = maxAceList.getValue();
-		int maxAceYear = maxAceData.getYear();
-		System.out.println("Max ace index year: " + maxAceYear);
+		System.out.println("max Ace Data: " + maxAceData);
+		//int maxAceYear = maxAceData.getYear();                //PROBLEM HERE
+		//System.out.println("Max ace index year: " + maxAceYear);
 		System.out.println("All data in order of Ace: ");
-		System.out.println(dataList);
+		System.out.println(dataList.toString());
+		*/
+		
+		//uses linkedlist option (2nd attempt)
+		//print year and ACE from maximal ACE year
+		
+
 
 		//STOPPED HERE
 		
@@ -137,7 +146,7 @@ public class Main {
 			//create filewriter and add data
 			FileWriter writer = new FileWriter("maxAceOutput.txt");
 			//writer.write(dataArray.get(maxIndex).toString());   //arrayList option
-			writer.write(maxAceList.toString());  //linkedList option
+			writer.write(dataList.toString());  //linkedList option //TODO change to max
 			
 			//close filewriter
 			writer.close();
