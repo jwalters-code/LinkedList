@@ -23,9 +23,17 @@ import java.util.ArrayList;
 
 public class Main {
 	public static void main(String args[]) {
+		
+		/*
+		//uses arrayList option
 		//create array list for hurrican row data
 		ArrayList<HurricaneRowData> dataArray = new ArrayList<HurricaneRowData>();
+		*/
 		
+		//uses linkedlist option
+		//create linkedList for hurricane row data
+		DoublyLinkedSortedList dataList = new DoublyLinkedSortedList();
+
 		try {
 			
 			//read in from file
@@ -65,8 +73,12 @@ public class Main {
 				HurricaneRowData hurricane = new HurricaneRowData
 					(numArray[0], numArray[1], numArray[2], numArray[3], numArray[4]);
 				
-				//add to hurricane object to data array list
-				dataArray.add(hurricane);
+				//add hurricane object to data array list
+				//dataArray.add(hurricane);
+				
+				//add hurricane object to data linked list
+				dataList.insert(hurricane);
+				
 			}
 			
 			//close scanner
@@ -88,7 +100,9 @@ public class Main {
 			System.out.println(dataArray.get(i));
 		}
 		*/
-	
+		
+		/*
+		//uses arrayList option 
 		//call maxYear method
 		int maxAceYear = maxYear(dataArray);
 		
@@ -100,17 +114,30 @@ public class Main {
 			if(dataArray.get(i).getYear() == maxAceYear) {
 				maxIndex = i;
 			}
-		}
-
+		} 
+	
 		//print year and ACE from maximal ACE year
 		System.out.print(dataArray.get(maxIndex).toString());
+		*/
+		
+		//uses linkedlist option
+		//get maximal maxAce year data and print
+		DoublyLinkedSortedList maxAceList = dataList.getFirst();
+		HurricaneRowData maxAceData = maxAceList.getValue();
+		int maxAceYear = maxAceData.getYear();
+		System.out.println("Max ace index year: " + maxAceYear);
+		System.out.println("All data in order of Ace: ");
+		System.out.println(dataList);
+
+		//STOPPED HERE
 		
 		//Output to text file
 		try {
 			
 			//create filewriter and add data
 			FileWriter writer = new FileWriter("maxAceOutput.txt");
-			writer.write(dataArray.get(maxIndex).toString());
+			//writer.write(dataArray.get(maxIndex).toString());   //arrayList option
+			writer.write(maxAceList.toString());  //linkedList option
 			
 			//close filewriter
 			writer.close();
@@ -122,7 +149,8 @@ public class Main {
 			System.exit(2);
 		}
 	}
-	
+	 
+	/*  for use with arrayList option
 	//method returns the year in which the ACE index was maximal
 	private static int maxYear (ArrayList<HurricaneRowData> dataArrayList) {
 		//create maxAce variable, set equal to first entry
@@ -136,15 +164,15 @@ public class Main {
 				aceIndex = i;
 			}
 			
-			/*
+			
 			//FOR TESTING
-			System.out.println(maxAce);
-			System.out.println(aceIndex);
-			*/
+			//System.out.println(maxAce);
+			//System.out.println(aceIndex);
+
 		}
 		
 		//retrieve year of maxAce and return year
 		int maxYear = dataArrayList.get(aceIndex).getYear();
 		return maxYear;
-	}
+	} */
 }
