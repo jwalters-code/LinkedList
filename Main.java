@@ -33,7 +33,7 @@ public class Main {
 		//uses linkedlist option
 		//create linkedList for hurricane row data
 		DoublyLinkedSortedList dataList = new DoublyLinkedSortedList();
-		System.out.println(dataList.getValue());
+		//System.out.println(dataList.getValue());  //test code
 
 		try {
 			
@@ -71,16 +71,18 @@ public class Main {
 				}
 				
 				//create hurricaneRowData objects
-				HurricaneRowData hurricane = new HurricaneRowData(numArray[0], numArray[1], numArray[2], numArray[3], numArray[4]);
+				HurricaneRowData hurricane = new HurricaneRowData
+					(numArray[0], numArray[1], numArray[2], numArray[3], numArray[4]);
 				
 				//add hurricane object to data array list
 				//dataArray.add(hurricane);
 				
 				//add hurricane object to data linked list
 				dataList.insert(hurricane);
-				
+				//System.out.println(hurricane);
 			}
-			System.out.println(dataList.getValue());
+			System.out.println(dataList);
+			
 			
 			//close scanner
 			readFile.close();

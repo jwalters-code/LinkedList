@@ -116,10 +116,22 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	public void insert(HurricaneRowData newValue) {
 	
 		//if empty list, set first linkedlist to this value
-		if(getValue() == null) { 
-			data = newValue;
+		if(this.data == null) { 
+			this.data = newValue;
 		}
 		
+		//if ace index value is greater than the current, add new behind it
+		else if(newValue.getAceIndex() > data.getAceIndex()) {
+			
+		}
+
+		else {  //smallest value, add to end
+			DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
+			DoublyLinkedSortedList lastList = getLast(); //get last list
+			newList.setPrevious(lastList);
+		}
+	}
+		/*
 		else if(newValue.getAceIndex() > data.getAceIndex()) {
 			if(hasPrevious() && hasNext()) { //middle
 				DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
@@ -148,32 +160,50 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 			//don't set newList next because already null
 			newList.setPrevious(this);  //newList's previous is current linkedList
 			setNext(newList);  //current linkedList's next is set to newList
-		}
-	}
+		}*/
+	//}
 	
-	/*
+	//TODO THIS DOES NOT WORK
 	//Return the entire list as a multi-line String
 	@Override
 	public String toString() {
 		
+		//String listString = "";
+		
+		DoublyLinkedSortedList current = this.getFirst();
+		
 		
 		//create String variable and add headers
-		String listString = String.format("%15s %15s %15s %15s %15s\n", 
+		String listString = String.format("%-10s %10s %20s %20s %20s\n", 
 			"Year", "Ace Index", "Tropical Storms", 
-			"Hurricanes Cat. 1-5", "Major Huricanes Cat. 3-5");
+			"Hurricanes(cat.1-5)", "Huricanes(cat.3-5)");
 		
-		while(hasNext()) {
-			
-			//add each LinkedList on separate lines
-			listString.concat(String.format("%15d %15d %15d %15d %15d\n",
-				data.getYear(), data.getAceIndex(), data.getNumStorms(), 
-				data.getNumHurr(), data.getNumMajHurr()));
-				
-			//advance to next and calltoString on next
-			if(hasNext()) {
-				next.toString();
-			}
+		listString = String.format("%s%s\n", listString, current.getValue());
+		
+		while(current.hasNext()) {
+			current = current.getNext();
+			listString = String.format("%s%s\n", listString, current.getValue());
 		}
+		
+		
+	
+		/*		
+		DoublyLinkedSortedList printList = getFirst();
+		
+		if(printList.hasNext()) {
+			//add each LinkedList on separate lines
+			listString.concat(String.format("%-10d %10d %10d %10d %10d\n",
+				printList.data.getYear(), printList.data.getAceIndex(), printList.data.getNumStorms(), 
+				printList.data.getNumHurr(), printList.data.getNumMajHurr()));
+			
+			//set printList to next
+			printList = getNext();
+		}
+			
+		//advance to next and calltoString on next
+		if(hasNext()) {
+			next.toString();
+		}*/
 		return listString;
-	}*/
+	}
 }

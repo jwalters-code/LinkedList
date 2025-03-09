@@ -30,7 +30,10 @@ public class HurricaneRowData {
 	@Override
 	public String toString() {
 		return String.format
-			("%15d %15d %15d %15d %15d", this.getYear(), this.getAceIndex(), this.getNumStorms(), this.getNumHurr(), this.getNumMajHurr());
+			("%-10d %10d %20d %20d %20d", 
+			this.getYear(), this.getAceIndex(), 
+			this.getNumStorms(), this.getNumHurr(), 
+			this.getNumMajHurr());
 	}
 	
 	//setter for year
