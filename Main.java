@@ -79,9 +79,12 @@ public class Main {
 				
 				//add hurricane object to data linked list
 				dataList.insert(hurricane);
-				//System.out.println(hurricane);
+				System.out.println(hurricane);
+				
+				System.out.println(dataList);
+				System.out.println();
 			}
-			System.out.println(dataList);
+			//System.out.println(dataList);
 			
 			
 			//close scanner

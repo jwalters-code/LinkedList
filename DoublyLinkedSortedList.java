@@ -120,16 +120,48 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 			this.data = newValue;
 		}
 		
-		//if ace index value is greater than the current, add new behind it
-		else if(newValue.getAceIndex() > data.getAceIndex()) {
+		//if ace index value is greater than the current, add newList behind it
+		else {
 			
+			//create newList to be inserted
+			DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);
+			
+			//create current list variable
+			DoublyLinkedSortedList current = this.getFirst();
+			
+			//check if ace index is greater than current
+			if(newValue.getAceIndex() > current.data.getAceIndex()) {
+				System.out.println("Loop 1");
+				
+				if(!current.hasPrevious()) { //first in list
+					newList.setNext(current);
+				}
+				else {  //middle or end of list
+					newList.setNext(current); 
+					newList.setPrevious(current.getPrevious());
+				}
+			}
+			
+			else if(newValue.getAceIndex() < current.data.getAceIndex() && !current.hasNext()) {  //smallest value
+						System.out.println("Loop 3");
+						newList.setPrevious(current);  //add to end
+					}
+			
+			else if(newValue.getAceIndex() < current.data.getAceIndex() && current.hasNext()) {
+				//advance current  to next and loop needs to run again
+			}
+			
+			
+			
+			//create current list variable
+			//DoublyLinkedSortedList current = this.getFirst();
 		}
 
-		else {  //smallest value, add to end
+		/*else {  //smallest value, add to end
 			DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
 			DoublyLinkedSortedList lastList = getLast(); //get last list
 			newList.setPrevious(lastList);
-		}
+		}*/
 	}
 		/*
 		else if(newValue.getAceIndex() > data.getAceIndex()) {
