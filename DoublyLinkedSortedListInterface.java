@@ -1,3 +1,11 @@
+/*
+Jade Walters
+CSCI 2251
+Assignment: Linked List with Hurricane Row Data
+Purpose: Practice working with linked lists
+Sources: only class resources (linked list lecture 
+and sample code)
+*/
 
 public interface DoublyLinkedSortedListInterface
 {

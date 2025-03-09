@@ -13,7 +13,9 @@ link: https://www.geeksforgeeks.org/how-to-convert-string-to-int-in-java/
 catch statement
 link:
 https://docs.oracle.com/javase/7/docs/technotes/guides/language/catch-multiple.html
+--class resources (linked list lecture and sample code)
 */
+
 
 import java.util.Scanner;
 import java.io.File;
