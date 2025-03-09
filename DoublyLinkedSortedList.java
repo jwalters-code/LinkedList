@@ -143,59 +143,31 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 			}
 			
 			else if(newValue.getAceIndex() < current.data.getAceIndex() && !current.hasNext()) {  //smallest value
-						System.out.println("Loop 3");
 						newList.setPrevious(current);  //add to end
 					}
 			
-			else if(newValue.getAceIndex() < current.data.getAceIndex() && current.hasNext()) {
-				//advance current  to next and loop needs to run again
-			}
-			
-			
-			
-			//create current list variable
-			//DoublyLinkedSortedList current = this.getFirst();
-		}
-
-		/*else {  //smallest value, add to end
-			DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
-			DoublyLinkedSortedList lastList = getLast(); //get last list
-			newList.setPrevious(lastList);
-		}*/
-	}
-		/*
-		else if(newValue.getAceIndex() > data.getAceIndex()) {
-			if(hasPrevious() && hasNext()) { //middle
-				DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
-				newList.setPrevious(previous); //set newList's previous to current previous
-				newList.setNext(this);  //set newLists's next to current linkedList
+			else {
+				while(current.hasNext()) {
+					current = current.getNext();
+					if(newValue.getAceIndex() > current.data.getAceIndex()) {
 				
-				//reset pointers of linkedlists ahead and behind to point to the inserted linkedlist
-				previous.setNext(newList);
-				next.setPrevious(newList);
-			}
-			
-			else if(!hasPrevious() && hasNext()) { //first linkedlist
-				DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
-				//don't set newList previous because already null
-				newList.setNext(this); //newList's next set to current linkedList
-				setPrevious(newList); //current linkedList's previous set to newList
+						if(!current.hasPrevious()) { //first in list
+							newList.setNext(current);
+						}
+						else {  //middle or end of list
+							newList.setNext(current); 
+							newList.setPrevious(current.getPrevious());
+						}
+					}
+				
+					else if(newValue.getAceIndex() < current.data.getAceIndex() && !current.hasNext()) {  //smallest value
+							newList.setPrevious(current);  //add to end
+					}
+				}
 			}
 		}
-		
-		else if(hasNext()) {
-			next.insert(newValue);  //call insert on next linkedlist
-		}
-		
-		else { //smallest value, add to end
-			DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);  //create newList
-			//don't set newList next because already null
-			newList.setPrevious(this);  //newList's previous is current linkedList
-			setNext(newList);  //current linkedList's next is set to newList
-		}*/
-	//}
+	}
 	
-	//TODO THIS DOES NOT WORK
 	//Return the entire list as a multi-line String
 	@Override
 	public String toString() {
