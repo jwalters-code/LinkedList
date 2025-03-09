@@ -168,42 +168,22 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	@Override
 	public String toString() {
 		
-		//String listString = "";
-		
+		//create current list variable
 		DoublyLinkedSortedList current = this.getFirst();
-		
 		
 		//create String variable and add headers
 		String listString = String.format("%-10s %10s %20s %20s %20s\n", 
 			"Year", "Ace Index", "Tropical Storms", 
 			"Hurricanes(cat.1-5)", "Huricanes(cat.3-5)");
 		
+		//add first linkedlist element to String
 		listString = String.format("%s%s\n", listString, current.getValue());
 		
+		//add concurrent linkedlist elements to String
 		while(current.hasNext()) {
 			current = current.getNext();
 			listString = String.format("%s%s\n", listString, current.getValue());
 		}
-		
-		
-	
-		/*		
-		DoublyLinkedSortedList printList = getFirst();
-		
-		if(printList.hasNext()) {
-			//add each LinkedList on separate lines
-			listString.concat(String.format("%-10d %10d %10d %10d %10d\n",
-				printList.data.getYear(), printList.data.getAceIndex(), printList.data.getNumStorms(), 
-				printList.data.getNumHurr(), printList.data.getNumMajHurr()));
-			
-			//set printList to next
-			printList = getNext();
-		}
-			
-		//advance to next and calltoString on next
-		if(hasNext()) {
-			next.toString();
-		}*/
 		return listString;
 	}
 }
