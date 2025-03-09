@@ -120,6 +120,34 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 			this.data = newValue;
 		}
 		
+		//create newList to be inserted
+		DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);
+		
+		if((newValue.getAceIndex() > data.getAceIndex()) || !hasNext()) {
+		
+			//if newList is the new first in list
+			if(!hasPrevious()) {
+				setPrevious(newList);
+			}
+			
+			//if newList is smallest number, attach to end
+			else if(!hasNext()) {  
+				setNext(newList);
+			}
+			
+			//if newList goes between two links
+			else { //MIGHT NOT NEED THIS CONDITIONAL< MAYBE JUST USE ELSE
+				newList.setPrevious(previous);
+				setPrevious(newList);
+			}
+			
+		}
+		else {
+			next.insert(newValue);
+		}
+		
+		
+		/*CSRAP THIS
 		//if ace index value is greater than the current, add newList behind it
 		else {
 			
@@ -165,7 +193,7 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 					}
 				}
 			}
-		}
+		}*/
 	}
 	
 	//Return the entire list as a multi-line String
