@@ -80,35 +80,35 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 		//create toRemove variable
 		DoublyLinkedSortedList toReturn = null;
 		
-		//Call the next linked list until it finds the data
-		while(!getValue().equals(toRemove)) { //while data != toRemove
+		//Call the next link until the correct one is found
+		while(!getValue().equals(toRemove)) { //not link to remove
 			next.remove(toRemove); //check next linkedlist
 		} 
-		
-		//if it finds the data, redirect next and previous pointers
+	
+		//if it finds the data, redirect pointers
 		if(getValue().equals(toRemove)) {
-			if(hasPrevious() && hasNext()) { //middle linkedlist
+			if(hasPrevious() && hasNext()) { //middle of linkedlist
 				toReturn = this;
-				next.setPrevious(previous);  //set next's previous to current previous
-				previous.setNext(next);  //set previous' next to current next
+				previous.setNext(next);
 			}
 			
-			else if(!hasPrevious() && hasNext()) { //first linkedlist
+			else if(!hasPrevious() && hasNext()) { //first in linkedlist
 				toReturn = this;
-				next.setPrevious(null);  //set next's previous to null
+				next.setPrevious(null);
 			}
 			
-			else if(hasPrevious() && !hasNext()) {  //last linkedlist
+			else if(hasPrevious() && !hasNext()) {  //last in linkedlist
 				toReturn = this;
 				previous.setNext(null);  //set previous's next to null
 			}
 			
 			else { //only link on list
 				toReturn = this;
-				data = null;  //erase data, pointers already null
+				data = null;  //nullify data, pointers already null
+				System.out.print("Only link in list, data has been nullified");
 			}
 		}
-		return toReturn;  //null if not found, or set to deleted linked list if found
+		return toReturn;  //deleted link, null if not found
 	}
 	
 	//Insert a new DoublyLinkedSortedList element that has the given newValue in order in the list.
@@ -123,77 +123,27 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 		//create newList to be inserted
 		DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);
 		
-		if((newValue.getAceIndex() > data.getAceIndex()) || !hasNext()) {
+		if((newValue.getAceIndex() > data.getAceIndex()) || (newValue.getAceIndex() <= data.getAceIndex()) && !hasNext()) {
 		
 			//if newList is the new first in list
-			if(!hasPrevious()) {
+			if((newValue.getAceIndex() > data.getAceIndex()) && !hasPrevious()) {
 				setPrevious(newList);
 			}
 			
 			//if newList is smallest number, attach to end
-			else if(!hasNext()) {  
+			else if((newValue.getAceIndex() <= data.getAceIndex()) && !hasNext()) {  
 				setNext(newList);
 			}
 			
 			//if newList goes between two links
-			else { //MIGHT NOT NEED THIS CONDITIONAL< MAYBE JUST USE ELSE
+			else {
 				newList.setPrevious(previous);
 				setPrevious(newList);
 			}
-			
 		}
 		else {
-			next.insert(newValue);
+			next.insert(newValue);  //check next link
 		}
-		
-		
-		/*CSRAP THIS
-		//if ace index value is greater than the current, add newList behind it
-		else {
-			
-			//create newList to be inserted
-			DoublyLinkedSortedList newList = new DoublyLinkedSortedList(newValue);
-			
-			//create current list variable
-			DoublyLinkedSortedList current = this.getFirst();
-			
-			//check if ace index is greater than current
-			if(newValue.getAceIndex() > current.data.getAceIndex()) {
-				System.out.println("Loop 1");
-				
-				if(!current.hasPrevious()) { //first in list
-					newList.setNext(current);
-				}
-				else {  //middle or end of list
-					newList.setNext(current); 
-					newList.setPrevious(current.getPrevious());
-				}
-			}
-			
-			else if(newValue.getAceIndex() < current.data.getAceIndex() && !current.hasNext()) {  //smallest value
-						newList.setPrevious(current);  //add to end
-					}
-			
-			else {
-				while(current.hasNext()) {
-					current = current.getNext();
-					if(newValue.getAceIndex() > current.data.getAceIndex()) {
-				
-						if(!current.hasPrevious()) { //first in list
-							newList.setNext(current);
-						}
-						else {  //middle or end of list
-							newList.setNext(current); 
-							newList.setPrevious(current.getPrevious());
-						}
-					}
-				
-					else if(newValue.getAceIndex() < current.data.getAceIndex() && !current.hasNext()) {  //smallest value
-							newList.setPrevious(current);  //add to end
-					}
-				}
-			}
-		}*/
 	}
 	
 	//Return the entire list as a multi-line String
