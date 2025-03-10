@@ -163,7 +163,7 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 		//create String variable and add headers
 		String listString = String.format("%-10s %10s %20s %20s %20s\n", 
 			"Year", "Ace Index", "Tropical Storms", 
-			"Hurricanes(cat.1-5)", "Huricanes(cat.3-5)");
+			"Hurricanes(cat.1-5)", "Hurricanes(cat.3-5)");
 		
 		//add first linkedlist element to String
 		listString = String.format("%s%s\n", listString, current.getValue());

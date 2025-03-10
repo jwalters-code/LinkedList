@@ -1,4 +1,4 @@
-Year        Ace Index      Tropical Storms  Hurricanes(cat.1-5)   Huricanes(cat.3-5)
+Year        Ace Index      Tropical Storms  Hurricanes(cat.1-5)  Hurricanes(cat.3-5)
 2005              248                   28                   15                    7
 1950              243                   13                   11                    8
 1950              243                   13                   11                    8

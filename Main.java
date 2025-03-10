@@ -16,7 +16,6 @@ https://docs.oracle.com/javase/7/docs/technotes/guides/language/catch-multiple.h
 --class resources (linked list lecture and sample code)
 */
 
-
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
@@ -81,13 +80,8 @@ public class Main {
 				
 				//add hurricane object to data linked list
 				dataList.insert(hurricane);
-				System.out.println(hurricane);
-				
-				System.out.println(dataList);
-				System.out.println();
+				//System.out.println(hurricane);  //test code
 			}
-			//System.out.println(dataList);
-			
 			
 			//close scanner
 			readFile.close();
@@ -110,7 +104,7 @@ public class Main {
 		*/
 		
 		/*
-		//uses arrayList option 
+		//arrayList option 
 		//call maxYear method
 		int maxAceYear = maxYear(dataArray);
 		
@@ -128,25 +122,12 @@ public class Main {
 		System.out.print(dataArray.get(maxIndex).toString());
 		*/
 		
-		/*
-		//uses linkedlist option
-		//get maximal maxAce year data and print
-		DoublyLinkedSortedList maxAceList = dataList.getFirst();
-		HurricaneRowData maxAceData = maxAceList.getValue();
-		System.out.println("max Ace Data: " + maxAceData);
-		//int maxAceYear = maxAceData.getYear();                //PROBLEM HERE
-		//System.out.println("Max ace index year: " + maxAceYear);
-		System.out.println("All data in order of Ace: ");
-		System.out.println(dataList.toString());
-		*/
-		
-		//uses linkedlist option (2nd attempt)
-		//print year and ACE from maximal ACE year
-		
-
-
-		//STOPPED HERE
-		
+		//Print results, linked list option
+		int maxAceYear = maxYear(dataList);  //get max year
+		System.out.println("Year of max Ace: " + maxAceYear);
+		System.out.println("All data in order of Ace:");
+		System.out.println(dataList);
+			
 		//Output to text file
 		try {
 			
@@ -180,15 +161,21 @@ public class Main {
 				aceIndex = i;
 			}
 			
-			
 			//FOR TESTING
 			//System.out.println(maxAce);
 			//System.out.println(aceIndex);
-
 		}
 		
 		//retrieve year of maxAce and return year
 		int maxYear = dataArrayList.get(aceIndex).getYear();
 		return maxYear;
 	} */
+	
+	//method returns max Ace year, use with linked list
+	private static int maxYear (DoublyLinkedSortedList dataList) {
+		DoublyLinkedSortedList maxAceList = dataList.getFirst();  //max Ace link
+		HurricaneRowData maxAceHurricane = maxAceList.getValue();  //max Ace hurricane
+		int maxAceYear = maxAceHurricane.getYear();  //max Ace year
+		return maxAceYear;
+	}
 }
