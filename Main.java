@@ -95,7 +95,7 @@ public class Main {
 			System.out.println("There was an IO Exception.");
 			System.exit(1);
 		}
-		
+			
 		/*
 		//FOR TESTING
 		for(int i=0; i<dataArray.size(); i++) {

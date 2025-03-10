@@ -83,39 +83,30 @@ public class DoublyLinkedSortedList implements DoublyLinkedSortedListInterface {
 	
 	//Remove the DoublyLinkedSortedList element that has toRemove as its value
 	public DoublyLinkedSortedList remove(HurricaneRowData toRemove) {
-		
-		//create toRemove variable
-		DoublyLinkedSortedList toReturn = null;
-		
-		//Call the next link until the correct one is found
-		while(!getValue().equals(toRemove)) { //not link to remove
-			next.remove(toRemove); //check next linkedlist
-		} 
-	
-		//if it finds the data, redirect pointers
-		if(getValue().equals(toRemove)) {
-			if(hasPrevious() && hasNext()) { //middle of linkedlist
-				toReturn = this;
-				previous.setNext(next);
-			}
 			
-			else if(!hasPrevious() && hasNext()) { //first in linkedlist
-				toReturn = this;
+		if(toRemove.getYear() == data.getYear()) { //look for data for year in question
+			if(!hasPrevious()) { //first in list
 				next.setPrevious(null);
 			}
 			
-			else if(hasPrevious() && !hasNext()) {  //last in linkedlist
-				toReturn = this;
-				previous.setNext(null);  //set previous's next to null
+			else if(!hasNext()) { //last in list
+				previous.setNext(null);
 			}
 			
-			else { //only link on list
-				toReturn = this;
-				data = null;  //nullify data, pointers already null
-				System.out.print("Only link in list, data has been nullified");
+			else if(!hasPrevious() && !hasNext()) { //only on list
+				data = null;
+				System.out.print("Only link in list. Data has been nullified.");
 			}
+			
+			else { //middle of the list
+				next.setPrevious(previous);
+			}
+		} 
+		
+		else {
+			next.remove(toRemove);  //call remove on next link
 		}
-		return toReturn;  //deleted link, null if not found
+		return this; //current link
 	}
 	
 	//Insert a new DoublyLinkedSortedList element that has the given newValue in order in the list.
