@@ -134,7 +134,7 @@ public class Main {
 			//create filewriter and add data
 			FileWriter writer = new FileWriter("maxAceOutput.txt");
 			//writer.write(dataArray.get(maxIndex).toString());   //arrayList option
-			writer.write(dataList.toString());  //linkedList option //TODO change to max
+			writer.write(dataList.toString());  //linkedList option 
 			
 			//close filewriter
 			writer.close();
